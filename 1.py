@@ -1,32 +1,51 @@
-# from mosek.fusion import *
-import mosek
+from mosek.fusion import *
+import mosek as msk
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+import random
 
-something wrong
+def plot_points(p, p0=[], r0=0.):
+    n,k= len(p0), len(p)
 
-def main(args):
-    A = [[3.0, 1.0, 2.0, 0.0],
-         [2.0, 1.0, 3.0, 1.0],
-         [0.0, 2.0, 0.0, 3.0]]
-    c = [3.0, 1.0, 5.0, 1.0]
+    plt.rc('savefig',dpi=120)
 
-    # Create a model with the name 'lo1'
-    with Model("lo1") as M:
+    fig, ax = plt.subplots()
+    ax.set_aspect('equal')
+    ax.plot([ p[i][0] for i in range(k)], [ p[i][1] for i in range(k)], 'b*')
 
-        # Create variable 'x' of length 4
-        x = M.variable("x", 4, Domain.greaterThan(0.0))
+    if len(p0)>0:
+        ax.plot(  p0[0],p0[1], 'r.')
+        ax.add_patch( mpatches.Circle( p0,  r0 ,  fc="w", ec="r", lw=1.5) )
+    plt.grid()
+    plt.show()
 
-        # Create constraints
-        M.constraint(x.index(1), Domain.lessThan(10.0))
-        M.constraint("c1", Expr.dot(A[0], x), Domain.equalsTo(30.0))
-        M.constraint("c2", Expr.dot(A[1], x), Domain.greaterThan(15.0))
-        M.constraint("c3", Expr.dot(A[2], x), Domain.lessThan(25.0))
+n = 2
+k = 100
 
-        # Set the objective function to (c^t * x)
-        M.objective("obj", ObjectiveSense.Maximize, Expr.dot(c, x))
+p=  [ [random.gauss(0.,10.) for nn in range(n)] for kk in range(k)]
 
-        # Solve the problem
+def primal_problem(P):
+    k= len(P)
+    if k==0: return -1,[]
+    n= len(P[0])
+    with Model("minimal sphere enclosing a set of points - primal") as M:
+        r0 = M.variable(1    , Domain.greaterThan(0.))
+        p0 = M.variable([1,n], Domain.unbounded())
+
+        R0 = Var.repeat(r0,k)
+        P0 = Var.repeat(p0,k)
+
+        M.constraint( Expr.hstack( R0, Expr.sub(P0 , P) ), Domain.inQCone())
+
+        M.objective(ObjectiveSense.Minimize, r0)
+        M.setLogHandler(open('logp','wt'))
+
         M.solve()
+        return r0.level()[0], p0.level()
 
-        # Get the solution values
-        sol = x.level()
-        print('\n'.join(["x[%d] = %f" % (i, sol[i]) for i in range(4)]))
+r0,p0 = primal_problem(p)
+
+print ("r0^* = ", r0)
+print ("p0^* = ", p0)
+
+plot_points(p,p0,r0)
