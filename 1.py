@@ -7,7 +7,7 @@ import random
 def plot_points(p, p0=[], r0=0.):
     n,k= len(p0), len(p)
 
-    plt.rc('savefig',dpi=120)
+    plt.rc('savefig',dpi=240)
 
     fig, ax = plt.subplots()
     ax.set_aspect('equal')
