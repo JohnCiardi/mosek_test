@@ -1,0 +1,67 @@
+Problem
+  Name                   : minimal sphere enclosing a set of points - primal
+  Objective sense        : min             
+  Type                   : CONIC (conic optimization problem)
+  Constraints            : 1600            
+  Cones                  : 400             
+  Scalar variables       : 1605            
+  Matrix variables       : 0               
+  Integer variables      : 0               
+
+Optimizer started.
+Presolve started.
+Linear dependency checker started.
+Linear dependency checker terminated.
+Eliminator started.
+Freed constraints in eliminator : 0
+Eliminator terminated.
+Eliminator - tries                  : 1                 time                   : 0.00            
+Lin. dep.  - tries                  : 1                 time                   : 0.00            
+Lin. dep.  - number                 : 0               
+Presolve terminated. Time: 0.00    
+Problem
+  Name                   : minimal sphere enclosing a set of points - primal
+  Objective sense        : min             
+  Type                   : CONIC (conic optimization problem)
+  Constraints            : 1600            
+  Cones                  : 400             
+  Scalar variables       : 1605            
+  Matrix variables       : 0               
+  Integer variables      : 0               
+
+Optimizer  - threads                : 8               
+Optimizer  - solved problem         : the dual        
+Optimizer  - Constraints            : 4
+Optimizer  - Cones                  : 400
+Optimizer  - Scalar variables       : 1601              conic                  : 1600            
+Optimizer  - Semi-definite variables: 0                 scalarized             : 0               
+Factor     - setup time             : 0.00              dense det. time        : 0.00            
+Factor     - ML order time          : 0.00              GP order time          : 0.00            
+Factor     - nonzeros before factor : 10                after factor           : 10              
+Factor     - dense dim.             : 0                 flops                  : 1.20e+04        
+ITE PFEAS    DFEAS    GFEAS    PRSTATUS   POBJ              DOBJ              MU       TIME  
+0   3.2e+01  4.0e+02  1.0e+00  0.00e+00   0.000000000e+00   0.000000000e+00   1.0e+00  0.00  
+1   7.1e-02  8.9e-01  4.7e-02  -1.00e+00  4.386504208e+02   8.772788111e+02   2.2e-03  0.00  
+2   2.9e-02  3.7e-01  3.5e-03  1.51e+00   2.839443958e+02   2.978595671e+02   9.2e-04  0.00  
+3   5.3e-03  6.7e-02  4.0e-04  5.02e+00   5.132749974e+01   5.717385489e+01   1.7e-04  0.00  
+4   3.8e-03  4.7e-02  2.3e-04  2.73e+00   3.800895628e+01   4.172435102e+01   1.2e-04  0.00  
+5   3.2e-03  4.0e-02  2.0e-04  1.27e+00   4.149840331e+01   4.523766818e+01   1.0e-04  0.00  
+6   8.7e-04  1.1e-02  2.8e-05  1.44e+00   3.693969991e+01   3.796982475e+01   2.8e-05  0.00  
+7   7.1e-04  8.9e-03  2.0e-05  1.09e+00   3.751978561e+01   3.834182181e+01   2.2e-05  0.00  
+8   1.9e-04  2.4e-03  2.6e-06  1.09e+00   3.643475690e+01   3.663495420e+01   5.9e-06  0.00  
+9   5.0e-05  6.3e-04  3.0e-07  1.01e+00   3.631988056e+01   3.635697205e+01   1.6e-06  0.00  
+10  4.5e-06  5.7e-05  6.9e-09  1.00e+00   3.629044624e+01   3.629279039e+01   1.4e-07  0.00  
+11  3.7e-07  4.7e-06  1.6e-10  1.00e+00   3.628824109e+01   3.628843446e+01   1.2e-08  0.00  
+12  6.0e-08  7.5e-07  1.0e-11  1.00e+00   3.628808948e+01   3.628812008e+01   1.9e-09  0.00  
+13  8.9e-09  1.1e-07  6.0e-13  1.00e+00   3.628806808e+01   3.628807258e+01   2.8e-10  0.00  
+14  1.1e-09  1.3e-08  2.5e-14  1.00e+00   3.628806522e+01   3.628806576e+01   3.4e-11  0.00  
+15  3.0e-10  3.1e-09  2.5e-15  1.00e+00   3.628806498e+01   3.628806510e+01   7.8e-12  0.00  
+16  3.6e-11  1.5e-10  6.7e-16  1.00e+00   3.628806493e+01   3.628806494e+01   3.8e-13  0.00  
+Optimizer terminated. Time: 0.00    
+
+
+Interior-point solution summary
+  Problem status  : PRIMAL_AND_DUAL_FEASIBLE
+  Solution status : OPTIMAL
+  Primal.  obj: 3.6288064931e+01    nrm: 4e+01    Viol.  con: 0e+00    var: 0e+00    cones: 0e+00  
+  Dual.    obj: 3.6288064935e+01    nrm: 4e+01    Viol.  con: 0e+00    var: 3e-12    cones: 0e+00  
